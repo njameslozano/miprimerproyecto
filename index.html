@@ -1,0 +1,67 @@
+{% include 'base.html' %}
+{% load static %}
+
+{% block container %}
+<div class="row">
+    <div class="col s12">
+        <h1 style="text-align: center;">Bienvenido a tu programa COVID</h1>
+    </div>
+    <div class="col s12 center-align">
+        <img src="{% static 'img/coronavirus1.png' %}" height="200"/>
+
+    </div>
+
+
+    
+    <div class="col s12">
+        <h5>Este es el listado de las {{numero_de_enfermedades}} enfermedades que aumentan el riesgo de COVID</h5>
+    </div>
+
+    <div class="col s4">
+            
+        <table>
+            <thead>
+                <tr>
+                    <th>Enfermedades</th>
+                </tr>
+            </thead>
+            <tbody>
+                    
+                {% for dis in enfermedades %}
+                <tr>
+                    <td>{{dis}}</td>
+                </tr>
+                {% endfor %}
+                
+
+            </tbody>
+        </table>
+    </div>
+
+    
+    <div class="col s12">
+        <h5>Este es el listado de los {{numero_de_sintomas}} sintomas que presentan las personas con COVID</h5>
+    </div>
+
+    <div class="col s4">
+        <table>
+            <thead>
+                <tr>
+                    <th>Sintomas</th>
+                </tr>
+
+            </thead>
+            <tbody>
+
+                {% for ans in sintomas %}
+                <tr>
+                    <td>{{ans}}</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+            </table>
+
+    </div>
+</div>
+{% endblock %}
