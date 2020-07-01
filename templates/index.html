@@ -1,0 +1,87 @@
+{% include 'base.html' %}
+{% load static %}
+
+{% block container %}
+<div class="row">
+    <div class="col s12">
+        <h1 style="text-align: center;">Bienvenido a tu programa COVID</h1>
+    </div>
+    <div class="col s12 center-align">
+        <img src="{% static 'img/mascarilla.png' %}" height="300"/>
+
+    </div>
+
+
+    
+    <div class="col s6 offset-s3">
+        <h3>Informacion importante sobre los {{numero_de_factores}} factores mas frecuentes</h3>
+    </div>
+
+    <div class="col s6 offset-s3">
+            <table>
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Factores</th>
+                        <th>Información</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        
+                    {% for factor in factores %}
+                    <tr>
+                        <td><b>{{forloop.counter}}</b></td>
+                        <td>{{factor.nombre}}</td>
+                        <td>
+                            <a 
+                                style="background-color: #DF2935" 
+                                href="{% url 'detalle' %}?idfactor={{factor.id}}" 
+                                class="waves-effect waves-light btn"
+                            >
+                                Ver mas info sobre {{factor.nombre}}
+                            </a>
+                        </td>    
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    </div>
+
+    
+    <div class="col s6 offset-s3">
+        <h3>Información sobre los {{numero_de_sintomas}} sintomas mas frecuentes</h3>
+    </div>
+
+    <div class="col s6 offset-s3">
+        <table>
+            <thead>
+                <tr>
+                    <th>N°</th>
+                    <th>Sintomas</th>
+                    <th>Información</th>
+                </tr>
+
+            </thead>
+            <tbody>
+
+                {% for sin in sintomas %}
+                <tr>
+                    <td><b>{{forloop.counter}}</b></td>
+                    <td>{{sin.nombre}}</td>
+                    <td>
+                        <a 
+                            style="background-color: #DF2935" 
+                            href="{% url 'detalledos' %}?idsintoma={{sin.id}}" 
+                            class="waves-effect waves-light btn"
+                        >
+                            Ver mas info sobre {{sin.nombre}}
+                        </a>
+                    </td>    
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
